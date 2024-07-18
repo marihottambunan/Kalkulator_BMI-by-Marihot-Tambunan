@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator BMI</title>
+    <!-- Link ke file CSS aplikasi -->
+    <link rel="stylesheet" href="css/app.css">
+    <!-- Link ke file JavaScript aplikasi -->
+    <script src="js/app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Kalkulator BMI</h1>
+        <!-- Penjelasan tentang kalkulator BMI -->
+        <p>Berat badan ideal adalah impian semua orang. Tidak hanya memiliki bentuk tubuh yang menunjang penampilan, berat badan ideal juga menandakan kondisi tubuh yang sehat. Bagaimana denganmu? Yuk, hitung sekarang di kalkulator BMI.</p>
+        
+        <!-- Formulir untuk mengisi data -->
+        <form id="bmi-form">
+            <div class="gender">
+                <!-- Pilihan jenis kelamin -->
+                <label><input type="radio" name="gender" value="Pria" checked> Pria</label>
+                <label><input type="radio" name="gender" value="Wanita"> Wanita</label>
+            </div>
+            <label for="weight">Berat Badan (kg)</label>
+            <input type="number" id="weight" required>
+            <label for="age">Usia (tahun)</label>
+            <input type="number" id="age" required>
+            <label for="height">Tinggi badan (cm)</label>
+            <input type="number" id="height" required>
+            <div class="buttons">
+                <!-- Tombol untuk menghitung BMI -->
+                <button type="button" class="calculate" onclick="calculateBMI()">Hitung BMI</button>
+                <!-- Tombol untuk mereset form -->
+                <button type="reset" class="reset">Reset</button>
+            </div>
+            <!-- Pesan error jika ada field yang tidak diisi -->
+            <div id="error-message" class="error" style="display: none;">Harap isi semua bidang dengan nilai yang valid.</div>
+        </form>
+        
+        <!-- Hasil penghitungan BMI -->
+        <div class="result" id="result" style="display:none;">
+            <h2>Hasil</h2>
+            <p class="bmi-status"></p>
+            <p class="bmi-value"></p>
+        </div>
+        
+        <!-- Fitur-fitur dari aplikasi -->
+        <div class="features">
+            <h2>Keunggulan fitur</h2>
+            <ul>
+                <li>1. Menghitung berat badan</li>
+                <li>2. Menentukan kategori berat badan ideal atau tidak</li>
+                <li>3. Mempersiapkan program penurunan berat badan</li>
+            </ul>
+        </div>
+        
+        <!-- Konsultasi dengan ahli gizi -->
+        <div class="consultation" id="consultation" style="display: none;">
+            <button onclick="alert('Konsultasi Ahli Gizi Via Aplikasi')">Konsultasi Ahli Gizi Via Aplikasi</button>
+            <button onclick="alert('Registrasi Online Ahli Gizi')">Registrasi Online Ahli Gizi</button>
+        </div>
+        
+        <!-- Informasi tentang penyakit akibat kegemukan -->
+        <div class="disease-info" id="disease-info" style="display: none;">
+            <h3>Beberapa penyakit yang berasal dari kegemukan</h3>
+            <ul>
+                <li>Diabetes</li>
+                <li>Hipertensi</li>
+                <li>Sakit Jantung</li>
+                <li>Osteoarthritis</li>
+            </ul>
+            <h3>Solusi untuk mengatasi kegemukan</h3>
+            <ul>
+                <li>Kurangi asupan kalori</li>
+                <li>Tingkatkan aktivitas fisik</li>
+                <li>Konsumsi makanan yang kaya serat</li>
+                <li>Hindari makanan cepat saji dan minuman manis</li>
+                <li>Mengelola stres dengan baik</li>
+            </ul>
+            <div class="consultation">
+                <button onclick="alert('Konsultasi Dokter Via Aplikasi')">Konsultasi Dokter Via Aplikasi</button>
+                <button onclick="alert('Registrasi Online Sekarang')">Registrasi Online Sekarang</button>
+            </div>
+        </div>
+        
+        <!-- Informasi tentang penyakit akibat kekurangan berat badan -->
+        <div class="disease-info" id="underweight-info" style="display: none;">
+            <h3>Beberapa penyakit yang berasal dari kekurangan berat badan</h3>
+            <ul>
+                <li>Malnutrisi</li>
+                <li>Anemia</li>
+                <li>Kekebalan tubuh menurun</li>
+                <li>Osteoporosis</li>
+            </ul>
+            <h3>Solusi untuk mengatasi kekurangan berat badan</h3>
+            <ul>
+                <li>Tingkatkan asupan kalori</li>
+                <li>Makan lebih sering</li>
+                <li>Tambahkan makanan berlemak sehat</li>
+                <li>Lakukan latihan beban</li>
+                <li>Hindari aktivitas berlebihan</li>
+            </ul>
+            <div class="consultation">
+                <button onclick="alert('Konsultasi Ahli Gizi Via Aplikasi')">Konsultasi Ahli Gizi Via Aplikasi</button>
+                <button onclick="alert('Registrasi Online Sekarang')">Registrasi Online Sekarang</button>
+            </div>
+        </div>
+
+        <!-- Informasi tentang obesitas -->
+        <div class="obesity-info" id="obesity-info" style="display: none;">
+            <h3>Akibat dari obesitas</h3>
+            <p>Obesitas dapat menyebabkan berbagai masalah kesehatan seperti:</p>
+            <ul>
+                <li>Diabetes tipe 2</li>
+                <li>Penyakit jantung</li>
+                <li>Hipertensi</li>
+                <li>Gangguan tidur (sleep apnea)</li>
+                <li>Masalah sendi (osteoarthritis)</li>
+            </ul>
+            <h3>Solusi untuk mengatasi obesitas</h3>
+            <ul>
+                <li>Menerapkan pola makan sehat dan seimbang</li>
+                <li>Melakukan aktivitas fisik secara teratur</li>
+                <li>Konsultasi dengan ahli gizi atau dokter</li>
+                <li>Menghindari kebiasaan makan berlebihan</li>
+                <li>Mengelola stres dengan baik</li>
+            </ul>
+            <div class="consultation">
+                <button onclick="alert('Konsultasi Ahli Gizi Via Aplikasi')">Konsultasi Ahli Gizi Via Aplikasi</button>
+                <button onclick="alert('Registrasi Online Sekarang')">Registrasi Online Sekarang</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
